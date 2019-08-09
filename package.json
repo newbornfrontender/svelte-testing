@@ -1,0 +1,100 @@
+{
+  "name": "svelte-testing",
+  "version": "1.0.0",
+  "repository": "https://github.com/newbornfrontender/svelte-testing.git",
+  "author": "Infant Frontender <newbornfrontender@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/preset-env": "^7.5.5",
+    "@testing-library/jest-dom": "^4.0.0",
+    "@testing-library/svelte": "^1.7.1",
+    "babel-eslint": "^10.0.2",
+    "babel-jest": "^24.8.0",
+    "eslint": "^6.1.0",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-plugin-jest": "^22.15.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-svelte3": "^2.7.3",
+    "jest": "^24.8.0",
+    "jest-transform-svelte": "^2.0.2",
+    "prettier": "^1.18.2",
+    "prettier-plugin-svelte": "^0.7.0",
+    "rimraf": "^2.6.3",
+    "rollup": "^1.19.4",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-svelte": "^5.1.0",
+    "svelte": "^3.7.1"
+  },
+  "dependencies": {
+    "sirv-cli": "^0.4.4"
+  },
+  "scripts": {
+    "format": "prettier --write **/*.{svelte,html,js,json} --ignore-path .gitignore",
+    "lint": "eslint src --fix --ext svelte,js",
+    "lint:check": "eslint --print-config src/main.js | eslint-config-prettier-check",
+    "test": "jest",
+    "serve": "sirv public -s -D",
+    "start": "rollup -c -w"
+  },
+  "prettier": {
+    "printWidth": 100,
+    "useTabs": false,
+    "tabWidth": 2,
+    "singleQuote": true,
+    "trailingComma": "all",
+    "arrowParens": "always"
+  },
+  "browserslist": [
+    "last 1 chrome version"
+  ],
+  "babel": {
+    "presets": [
+      "@babel/env"
+    ]
+  },
+  "eslintConfig": {
+    "parserOptions": {
+      "ecmaVersion": 2020,
+      "sourceType": "module"
+    },
+    "parser": "babel-eslint",
+    "env": {
+      "es6": true,
+      "browser": true
+    },
+    "plugins": [
+      "svelte3"
+    ],
+    "overrides": [
+      {
+        "files": "*.svelte",
+        "processor": "svelte3/svelte3",
+        "extends": "prettier"
+      },
+      {
+        "files": "*.js",
+        "extends": [
+          "plugin:jest/all",
+          "plugin:prettier/recommended"
+        ]
+      }
+    ],
+    "extends": [
+      "eslint:recommended"
+    ]
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.svelte$": "jest-transform-svelte",
+      "^.+\\.js$": "babel-jest"
+    },
+    "moduleFileExtensions": [
+      "svelte",
+      "js"
+    ],
+    "setupFilesAfterEnv": [
+      "@testing-library/svelte/cleanup-after-each"
+    ]
+  }
+}
