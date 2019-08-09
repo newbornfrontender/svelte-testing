@@ -2,7 +2,7 @@ import '@testing-library/jest-dom/extend-expect';
 import App from './App.svelte';
 import { render, wait } from '@testing-library/svelte';
 
-describe('app component', () => {
+describe('app', () => {
   it('programmatically change props', async () => {
     expect.hasAssertions();
 
@@ -29,10 +29,16 @@ describe('app component', () => {
           <h1
             class="svelte-12gyg4y"
           >
-            Hello
+            Hello 
             world
             !
           </h1>
+           
+          <button>
+            Clicked 
+            0
+             times
+          </button>
         </div>
       </body>
     `);
